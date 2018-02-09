@@ -7,14 +7,19 @@ package administy;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author user
  */
 public class Main extends javax.swing.JFrame {
-
+    ButtonGroup bg;
     /**
      * Creates new form Main
      */
@@ -24,6 +29,9 @@ public class Main extends javax.swing.JFrame {
         setFrameToCenter();
         panelBeranda.setVisible(true);
         panelContentBeranda.setVisible(true); 
+        bg = new ButtonGroup();
+        bg.add(rLakiLaki);
+        bg.add(rPerempuan);
    }
     
     public void setFrameToCenter(){
@@ -69,23 +77,23 @@ public class Main extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        iNamaSantri = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField5 = new javax.swing.JTextField();
+        iTempatLahirSantri = new javax.swing.JTextField();
+        rLakiLaki = new javax.swing.JRadioButton();
+        rPerempuan = new javax.swing.JRadioButton();
+        iTanggalLahirSantri = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        iAlamatSantri = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        iNisn = new javax.swing.JTextField();
+        iAsalSekolah = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        iAnakKe = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        iAnakDari = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -93,16 +101,16 @@ public class Main extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        iTempatLahirAyah = new javax.swing.JTextField();
+        iNoKtpIbu = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jTextField10 = new javax.swing.JTextField();
+        iAlamatAyah = new javax.swing.JTextArea();
+        iTanggalLahirAyah = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
+        iNoKtpAyah = new javax.swing.JTextField();
+        iTelponAyah = new javax.swing.JTextField();
+        iPekerjaanAyah = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -112,29 +120,29 @@ public class Main extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        iTempatLahirIbu = new javax.swing.JTextField();
+        iTanggalLahirIbu = new javax.swing.JTextField();
+        iNamaAyah = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
+        iAlamatIbu = new javax.swing.JTextArea();
+        iNamaIbu = new javax.swing.JTextField();
+        iTelponIbu = new javax.swing.JTextField();
+        iPekerjaanIbu = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
+        iTempatLahirWali = new javax.swing.JTextField();
+        iNamaWali = new javax.swing.JTextField();
+        iTanggalLahirWali = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        jTextField23 = new javax.swing.JTextField();
+        iAlamatWali = new javax.swing.JTextArea();
+        iPekerjaanWali = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
+        iNoKtpWali = new javax.swing.JTextField();
+        iTelponWali = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
@@ -148,6 +156,14 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
+        panelDataSantri = new javax.swing.JPanel();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jTextField26 = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -226,6 +242,11 @@ public class Main extends javax.swing.JFrame {
 
         jButton9.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jButton9.setText("Data Santri");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jButton10.setText("Pendaftaran Guru");
@@ -343,8 +364,8 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel1.setText("Nama");
 
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jTextField1.setText("Imsak Haqiqy");
+        iNamaSantri.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iNamaSantri.setText("Imsak Haqiqy");
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel2.setText("Tempat Tanggal Lahir");
@@ -352,59 +373,59 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel3.setText("Jenis Kelamin");
 
-        jTextField3.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jTextField3.setText("Jakarta");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        iTempatLahirSantri.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iTempatLahirSantri.setText("Jakarta");
+        iTempatLahirSantri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                iTempatLahirSantriActionPerformed(evt);
             }
         });
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jRadioButton1.setText("Laki-Laki");
+        rLakiLaki.setBackground(new java.awt.Color(255, 255, 255));
+        rLakiLaki.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        rLakiLaki.setText("Laki-Laki");
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jRadioButton2.setText("Perempuan");
+        rPerempuan.setBackground(new java.awt.Color(255, 255, 255));
+        rPerempuan.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        rPerempuan.setText("Perempuan");
 
-        jTextField5.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jTextField5.setText("24-01-1992");
+        iTanggalLahirSantri.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iTanggalLahirSantri.setText("24-01-1992");
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel4.setText("Alamat");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Jl.Buni RT 05/08 NO.17 Munjul Cipayung\nJakarta Timur 13850");
-        jScrollPane1.setViewportView(jTextArea1);
+        iAlamatSantri.setColumns(20);
+        iAlamatSantri.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iAlamatSantri.setRows(5);
+        iAlamatSantri.setText("Jl.Buni RT 05/08 NO.17 Munjul Cipayung\nJakarta Timur 13850");
+        jScrollPane1.setViewportView(iAlamatSantri);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel10.setText("NISN");
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        jTextField2.setText("000001111100011");
+        iNisn.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iNisn.setText("000001111100011");
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        jTextField4.setText("MA Sirojul Munir");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        iAsalSekolah.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iAsalSekolah.setText("MA Sirojul Munir");
+        iAsalSekolah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                iAsalSekolahActionPerformed(evt);
             }
         });
 
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel12.setText("Anak Ke-/ dari");
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        jTextField6.setText("1");
+        iAnakKe.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iAnakKe.setText("1");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jLabel13.setText("/");
 
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        jTextField7.setText("5");
+        iAnakDari.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iAnakDari.setText("5");
 
         jLabel21.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel21.setText("Asal Sekolah");
@@ -426,25 +447,25 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextField4)
+                    .addComponent(iAsalSekolah)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(rLakiLaki)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton2))
+                                .addComponent(rPerempuan))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(iAnakKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(iAnakDari, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(iTempatLahirSantri, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2))
+                                .addComponent(iTanggalLahirSantri, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                            .addComponent(iNamaSantri)
+                            .addComponent(iNisn))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -454,35 +475,35 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iNamaSantri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iTempatLahirSantri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iTanggalLahirSantri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rLakiLaki)
+                    .addComponent(rPerempuan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iAsalSekolah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iNisn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iAnakKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iAnakDari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -501,16 +522,16 @@ public class Main extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel17.setText("Alamat");
 
-        jTextField8.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iTempatLahirAyah.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
-        jTextField9.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iNoKtpIbu.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        iAlamatAyah.setColumns(20);
+        iAlamatAyah.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iAlamatAyah.setRows(5);
+        jScrollPane2.setViewportView(iAlamatAyah);
 
-        jTextField10.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iTanggalLahirAyah.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel18.setText("Pekerjaan");
@@ -518,11 +539,11 @@ public class Main extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel19.setText("No KTP");
 
-        jTextField12.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iNoKtpAyah.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
-        jTextField13.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iTelponAyah.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
-        jTextField14.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iPekerjaanAyah.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel11.setText("Telpon");
@@ -548,22 +569,22 @@ public class Main extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel27.setText("Telpon");
 
-        jTextField11.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iTempatLahirIbu.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
-        jTextField15.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iTanggalLahirIbu.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
-        jTextField16.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iNamaAyah.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        iAlamatIbu.setColumns(20);
+        iAlamatIbu.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iAlamatIbu.setRows(5);
+        jScrollPane3.setViewportView(iAlamatIbu);
 
-        jTextField17.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iNamaIbu.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
-        jTextField18.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iTelponIbu.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
-        jTextField19.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iPekerjaanIbu.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -582,15 +603,15 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iNoKtpAyah, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iPekerjaanAyah, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iNamaAyah, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(iTempatLahirAyah, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
-                            .addComponent(jTextField13))
+                                .addComponent(iTanggalLahirAyah, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                            .addComponent(iTelponAyah))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23)
@@ -601,15 +622,15 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField19, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iNoKtpIbu, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iPekerjaanIbu, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(iTempatLahirIbu, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField15, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
-                            .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField18))
+                                .addComponent(iTanggalLahirIbu, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                            .addComponent(iNamaIbu, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iTelponIbu))
                         .addGap(61, 61, 61))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -642,40 +663,40 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
                             .addComponent(jLabel22)
-                            .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(iNamaAyah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(iTempatLahirAyah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(iTanggalLahirAyah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel23)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(iTempatLahirIbu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(iTanggalLahirIbu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iNamaIbu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iPekerjaanAyah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iPekerjaanIbu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iNoKtpAyah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iNoKtpIbu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iTelponAyah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iTelponIbu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -691,18 +712,18 @@ public class Main extends javax.swing.JFrame {
         jLabel30.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel30.setText("Alamat");
 
-        jTextField20.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iTempatLahirWali.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
-        jTextField21.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iNamaWali.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
-        jTextField22.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iTanggalLahirWali.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        iAlamatWali.setColumns(20);
+        iAlamatWali.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iAlamatWali.setRows(5);
+        jScrollPane4.setViewportView(iAlamatWali);
 
-        jTextField23.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iPekerjaanWali.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
         jLabel31.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel31.setText("Pekerjaan");
@@ -713,9 +734,9 @@ public class Main extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
         jLabel33.setText("Telpon");
 
-        jTextField24.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
+        iNoKtpWali.setFont(new java.awt.Font("Verdana", 0, 8)); // NOI18N
 
-        jTextField25.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        iTelponWali.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -733,14 +754,14 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextField21, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iNamaWali, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(iTempatLahirWali, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField22, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
-                    .addComponent(jTextField23)
-                    .addComponent(jTextField24)
-                    .addComponent(jTextField25))
+                        .addComponent(iTanggalLahirWali, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                    .addComponent(iPekerjaanWali)
+                    .addComponent(iNoKtpWali)
+                    .addComponent(iTelponWali))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -749,27 +770,27 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iNamaWali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iTempatLahirWali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iTanggalLahirWali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel30)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iPekerjaanWali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel31))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
-                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iNoKtpWali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iTelponWali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -868,6 +889,11 @@ public class Main extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jButton2.setText("Simpan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jButton3.setText("Hapus");
@@ -930,6 +956,73 @@ public class Main extends javax.swing.JFrame {
         );
 
         jPanel2.add(panelPendaftaranSantri, "card2");
+
+        panelDataSantri.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton12.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jButton12.setText("Excel");
+
+        jButton13.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jButton13.setText("Pdf");
+
+        jButton14.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jButton14.setText("Print");
+
+        jButton15.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jButton15.setText("Search");
+
+        jTextField26.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable1);
+
+        javax.swing.GroupLayout panelDataSantriLayout = new javax.swing.GroupLayout(panelDataSantri);
+        panelDataSantri.setLayout(panelDataSantriLayout);
+        panelDataSantriLayout.setHorizontalGroup(
+            panelDataSantriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDataSantriLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDataSantriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE)
+                    .addGroup(panelDataSantriLayout.createSequentialGroup()
+                        .addComponent(jButton12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton15)))
+                .addContainerGap())
+        );
+        panelDataSantriLayout.setVerticalGroup(
+            panelDataSantriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDataSantriLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelDataSantriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelDataSantriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton13)
+                        .addComponent(jButton14)
+                        .addComponent(jButton15)
+                        .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panelDataSantri, "card4");
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -1013,6 +1106,8 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         panelBeranda.setVisible(true);
         panelKeanggotaan.setVisible(false);
+        panelPendaftaranSantri.setVisible(false);
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         panelKurikulum.setVisible(false);
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -1020,6 +1115,8 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         panelBeranda.setVisible(false);
         panelKeanggotaan.setVisible(false);
+        panelPendaftaranSantri.setVisible(false);
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         panelKurikulum.setVisible(true);
     }//GEN-LAST:event_menuKurikulumActionPerformed
 
@@ -1032,16 +1129,66 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         panelContentBeranda.setVisible(false);
         panelPendaftaranSantri.setVisible(true);
+        jButton1.setBackground(new java.awt.Color(0, 153, 204));
+        panelDataSantri.setVisible(false);
+        jButton9.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Pendaftaran Santri", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 11)));
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void iTempatLahirSantriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iTempatLahirSantriActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_iTempatLahirSantriActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void iAsalSekolahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iAsalSekolahActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_iAsalSekolahActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        panelContentBeranda.setVisible(false);
+        panelPendaftaranSantri.setVisible(false);
+        panelDataSantri.setVisible(true);
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton9.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Data Santri", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 11)));
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connection c = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            c = koneksi.koneksi.library();
+            // Ambil inputan panel santri
+            String namaSantri = String.valueOf(iNamaSantri.getText());
+            String tempatLahirSantri = String.valueOf(iTempatLahirSantri.getText());
+            String tanggalLahirSantri = String.valueOf(iTanggalLahirSantri.getText());
+            String jenisKelaminSantri;
+            if(rLakiLaki.isSelected()){
+               jenisKelaminSantri = "L";
+            }else{
+                jenisKelaminSantri = "P";
+            }
+            String alamatSantri = String.valueOf(iAlamatSantri.getText());
+            String asalSekolahSantri = String.valueOf(iAsalSekolah.getText());
+            Integer anakKe = Integer.valueOf(iAnakKe.getText());
+            Integer anakDari = Integer.valueOf(iAnakDari.getText());
+            
+            // Ambil inputan panel orang tua ayah
+            String namaAyah = String.valueOf(iNamaAyah.getText());
+            String tempatLahirAyah = String.valueOf(iTempatLahirAyah.getText());
+            String tanggalLahirAyah = String.valueOf(iTanggalLahirAyah.getText());
+            String alamatAyah = String.valueOf(iAlamatAyah.getText());
+            String pekerjaanAyah = String.valueOf(iPekerjaanAyah.getText());
+            String noKtpAyah = String.valueOf(iNoKtpAyah.getText());
+            String noTelponAyah = String.valueOf(iTelponAyah.getText());
+            JOptionPane.showMessageDialog(null,namaSantri+" "+tempatLahirSantri+" "+tanggalLahirSantri+" "+jenisKelaminSantri+" "+alamatSantri+" "+asalSekolahSantri+" "+anakKe+" "+anakDari
+            +" "+namaAyah+" "+tempatLahirAyah+" "+tanggalLahirAyah+" "+alamatAyah+" "+pekerjaanAyah+" "+noKtpAyah+" "+noTelponAyah);
+        }catch(Exception err){
+            err.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1080,9 +1227,42 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MenuKeanggotaan;
+    private javax.swing.JTextArea iAlamatAyah;
+    private javax.swing.JTextArea iAlamatIbu;
+    private javax.swing.JTextArea iAlamatSantri;
+    private javax.swing.JTextArea iAlamatWali;
+    private javax.swing.JTextField iAnakDari;
+    private javax.swing.JTextField iAnakKe;
+    private javax.swing.JTextField iAsalSekolah;
+    private javax.swing.JTextField iNamaAyah;
+    private javax.swing.JTextField iNamaIbu;
+    private javax.swing.JTextField iNamaSantri;
+    private javax.swing.JTextField iNamaWali;
+    private javax.swing.JTextField iNisn;
+    private javax.swing.JTextField iNoKtpAyah;
+    private javax.swing.JTextField iNoKtpIbu;
+    private javax.swing.JTextField iNoKtpWali;
+    private javax.swing.JTextField iPekerjaanAyah;
+    private javax.swing.JTextField iPekerjaanIbu;
+    private javax.swing.JTextField iPekerjaanWali;
+    private javax.swing.JTextField iTanggalLahirAyah;
+    private javax.swing.JTextField iTanggalLahirIbu;
+    private javax.swing.JTextField iTanggalLahirSantri;
+    private javax.swing.JTextField iTanggalLahirWali;
+    private javax.swing.JTextField iTelponAyah;
+    private javax.swing.JTextField iTelponIbu;
+    private javax.swing.JTextField iTelponWali;
+    private javax.swing.JTextField iTempatLahirAyah;
+    private javax.swing.JTextField iTempatLahirIbu;
+    private javax.swing.JTextField iTempatLahirSantri;
+    private javax.swing.JTextField iTempatLahirWali;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1143,49 +1323,24 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField26;
     private javax.swing.JButton menuKurikulum;
     private javax.swing.JPanel panelBeranda;
     private javax.swing.JPanel panelContentBeranda;
+    private javax.swing.JPanel panelDataSantri;
     private javax.swing.JPanel panelKeanggotaan;
     private javax.swing.JPanel panelKurikulum;
     private javax.swing.JPanel panelPendaftaranSantri;
+    private javax.swing.JRadioButton rLakiLaki;
+    private javax.swing.JRadioButton rPerempuan;
     // End of variables declaration//GEN-END:variables
 }
